@@ -2,6 +2,7 @@ import { useState } from 'react'
 import heroImg from './assets/hero.png'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
+import Myfuncomponent from './components/Myfuncomponent'
 import './App.css'
 
 function App() {
@@ -26,8 +27,9 @@ function App() {
           className="counter"
           onClick={() => setCount((count) => count + 1)}
         >
-          Count is {count}
+          Count is {count} I think to make sure it works
         </button>
+        <Myfuncomponent />
       </section>
 
       <div className="ticks"></div>

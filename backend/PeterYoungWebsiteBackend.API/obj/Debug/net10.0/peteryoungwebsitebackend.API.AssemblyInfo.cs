@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("peteryoungwebsitebackend.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f75b9fce179d16e5c4a78d2840dcd92515bd413b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+efaeba83c8f47bf5079b61de259416d9aeb9cdaa")]
 [assembly: System.Reflection.AssemblyProductAttribute("peteryoungwebsitebackend.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("peteryoungwebsitebackend.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
