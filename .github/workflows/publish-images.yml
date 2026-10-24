@@ -65,3 +65,24 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha,scope=${{ matrix.image }}
           cache-to: type=gha,mode=max,scope=${{ matrix.image }}
+
+  deploy:
+    needs: publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Connect to Tailscale
+        uses: tailscale/github-action@v4
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:ci-deploy
+
+      - name: Deploy on Raspberry Pi
+        env:
+          PI_DEPLOY_SSH_KEY: ${{ secrets.PI_DEPLOY_SSH_KEY }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$PI_DEPLOY_SSH_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H peterraspberrypi >> ~/.ssh/known_hosts
+          ssh -i ~/.ssh/id_ed25519 youngpet@peterraspberrypi 'cd /home/youngpet/postgres && docker compose pull backend frontend && docker compose up -d backend frontend'
